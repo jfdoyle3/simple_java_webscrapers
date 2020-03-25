@@ -28,4 +28,3 @@ public class console_scrape {
 	System.out.println(doc.outerHtml());
   }	
 }
-
