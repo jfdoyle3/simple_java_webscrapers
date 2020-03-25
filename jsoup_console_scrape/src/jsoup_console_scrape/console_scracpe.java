@@ -21,6 +21,7 @@ public class console_scracpe {
 	for (Element headline : newsHeadlines) {
 		System.out.println(headline.text());
 	}
+	
 	System.out.println("\n\n--------------------------------------------------------\n\n");
 	
 	//Output to console the html: outerhtml()
