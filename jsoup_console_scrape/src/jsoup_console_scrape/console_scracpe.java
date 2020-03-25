@@ -23,6 +23,7 @@ public class console_scracpe {
 	}
 	System.out.println("\n\n--------------------------------------------------------\n\n");
 	
+	//Output to console the html: outerhtml()
 	System.out.println(doc.outerHtml());
   }	
 }
