@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class console_scracpe {
+public class console_scrape {
 	
 	public static void main(String[] args) throws IOException {
 	

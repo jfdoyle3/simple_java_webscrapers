@@ -4,7 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 public class console_scraper {
@@ -15,13 +15,18 @@ public class console_scraper {
 	//Declare a Variable
 	public static final String USER_AGENT="Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0";
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		
 		//User Query
 		final String query="apple";
 		
 		//Download requested page and append user query to it.
 		final Document page=Jsoup.connect("https://www.google.com/search?q="+URLEncoder.encode(query,"UTF-8")).userAgent(USER_AGENT).get();
+		
+		//Test if code is working by displaying html using outerHtml(); 
+		//System.out.println(page.outerHtml());
+		
+		final PrintWriter txtOut=new PrintWriter("results.txt");
 		
 		//Iterate and Output to console the Title and URL link of query.
 		for (Element searchResult : page.select("h3.r a")) {
@@ -33,8 +38,9 @@ public class console_scraper {
 			final String url=searchResult.attr("href");
 			
 			//Display to console
-			System.out.println(title + " >>---> " + url );
+			txtOut.write(title + " >>---> " + url +"\n");
 		}
-
+		
+		txtOut.close();
 	}
 }
