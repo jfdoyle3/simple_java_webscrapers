@@ -9,7 +9,7 @@ IDE: Eclipse Java Enterprise Edition 2019-12 (4.14.0)
 
 ## Maven
 
-Package used: 
+Packages used: 
 Jsoup: 
 
 ``` html
@@ -21,7 +21,18 @@ Jsoup:
 </dependency>
 ```
 
-  
+  unirest:
+
+```html
+<!-- https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java -->
+<dependency>
+    <groupId>com.mashape.unirest</groupId>
+    <artifactId>unirest-java</artifactId>
+    <version>1.4.9</version>
+</dependency>
+```
+
+
 
 ## Headless Browser
 
