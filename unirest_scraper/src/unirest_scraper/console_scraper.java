@@ -8,10 +8,17 @@ public class console_scraper {
 
 	public static void main(String[] args) throws Exception {
 		
-		final HttpResponse<String> response=Unirest.get("http://httpbin.org/get").asString();
-		
-		System.out.println(response.getBody());
+		// Basic usage to get a json response.
+		//final HttpResponse<String> basicResponse=Unirest.get("http://httpbin.org/get").asString();
+		//System.out.println(basicResponse.getBody());
 
+		// Send a two args query and get a json response.
+		//final HttpResponse<String> queryResponse=Unirest.get("http://httpbin.org/get").queryString("CareerDevs",2020).asString();
+		//System.out.println(queryResponse.getBody());
+		
+		//Parse out json response.
+		final HttpResponse<JsonNode> queryResponse=Unirest.get("http://httpbin.org/get").queryString("CareerDevs",2020).asJson();
+		System.out.println(queryResponse.getBody());
 	}
 
 }
