@@ -6,6 +6,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import org.apache.http.HttpHost;
+import org.json.JSONObject;
 
 
 public class console_scraper {
@@ -40,6 +41,13 @@ public class console_scraper {
 		//Make a POST
 		final HttpResponse<String> postResponse=Unirest.post("http://httpbin.org/post").field("postalcode", 12345).asString();
 		System.out.println(postResponse.getBody());
+		
+		System.out.println("\n\n--------------------------------------------------------\n\n");
+		
+		//Make a post request with body data (Json)
+		final JSONObject jsonData=new JSONObject().put("postal code", 54321);
+		final HttpResponse<String> postJsonResponse=Unirest.post("http://httpbin.org/post").body(jsonData).asString();
+		System.out.println(postJsonResponse.getBody());
 		
 	}
 
