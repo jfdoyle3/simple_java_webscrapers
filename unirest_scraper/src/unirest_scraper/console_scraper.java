@@ -21,8 +21,11 @@ public class console_scraper {
 		//System.out.println(queryResponse.getBody());
 		
 		//Parse out json response and display a json key
+		//Make a single get to httpbin.org
 		final HttpResponse<JsonNode> response=Unirest.get("http://httpbin.org/get").queryString("CareerDevs",2020).asJson();
 		System.out.println(response.getBody().getObject().getString("origin"));
+		
+		
 		
 	}
 
