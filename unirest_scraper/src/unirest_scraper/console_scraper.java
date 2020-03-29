@@ -1,6 +1,6 @@
 package unirest_scraper;
 
-import org.json.JSONObject;
+
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -22,7 +22,7 @@ public class console_scraper {
 		
 		//Parse out json response and display a json key
 		final HttpResponse<JsonNode> response=Unirest.get("http://httpbin.org/get").queryString("CareerDevs",2020).asJson();
-	//	System.out.println(response.getBody().getObject().getString("origin"));
+		System.out.println(response.getBody().getObject().getString("origin"));
 		
 	}
 
