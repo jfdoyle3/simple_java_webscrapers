@@ -26,7 +26,11 @@ public class console_scraper {
 		//Test if code is working by displaying html using outerHtml(); 
 		//System.out.println(page.outerHtml());
 		
-		final PrintWriter txtOut=new PrintWriter("results.txt");
+		//Output to text file
+		// final PrintWriter txtOut=new PrintWriter("results.txt");
+		final PrintWriter csvOut=new PrintWriter("results.csv");
+		
+		csvOut.write("Title, URL\n");
 		
 		//Iterate and Output to console the Title and URL link of query.
 		for (Element searchResult : page.select("h3.r a")) {
@@ -38,9 +42,11 @@ public class console_scraper {
 			final String url=searchResult.attr("href");
 			
 			//Display to console
-			txtOut.write(title + " >>---> " + url +"\n");
+			//txtOut.write(title + " >>---> " + url +"\n");
+			csvOut.write(title + "," + url +"\n");
 		}
-		
-		txtOut.close();
+		System.out.println("File Saved");
+		csvOut.close();
+		//txtOut.close();
 	}
 }
