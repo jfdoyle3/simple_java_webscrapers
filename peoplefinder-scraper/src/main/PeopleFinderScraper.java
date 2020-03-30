@@ -26,7 +26,9 @@ public class PeopleFinderScraper {
 		
 		final Document htmlSnippet=Jsoup.parseBodyFragment(response.getBody());
 		
-		for (Element peopleResult : htmlSnippet.select("div.row > div.col-md-12 > div.row > div.col-md-11")) {
+		//for (Element peopleResult : htmlSnippet.select("div.row > div.col-md-12 > div.row > div.col-md-11")) {
+		for (Element peopleResult : htmlSnippet.select("div.col-md-12 person-search-results > a.record > div.col-lg-3 > h4.record__title")) {	
+				
 			System.out.println(peopleResult.child(0).text());
 			/*
 			 * final String name=peopleResult.child(0).text(); final String
