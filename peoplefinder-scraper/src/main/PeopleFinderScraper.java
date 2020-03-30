@@ -9,33 +9,35 @@ import com.mashape.unirest.http.Unirest;
 
 public class PeopleFinderScraper {
 
-	public static void main(String[] args) throws Exception{
-	
-		final String lastName="smith";
-		final String firstName="same";
-		final String city="New York";
-		final String state="ny";
-			
-		final HttpResponse<String> response=Unirest.get("https://www.peoplefinders.com/api/widget/widgets?totalRecords=10")
-												   .queryString("firstName", firstName)
-												   .queryString("lastName", lastName)
-												   .queryString("city",city)
-												   .queryString("start", state)
-												   .asString();
-		//System.out.println(response.getBody());
-		
-		final Document htmlSnippet=Jsoup.parseBodyFragment(response.getBody());
-		
-		//for (Element peopleResult : htmlSnippet.select("div.row > div.col-md-12 > div.row > div.col-md-11")) {
-		for (Element peopleResult : htmlSnippet.select("div.col-md-12 person-search-results > a.record > div.col-lg-3 > h4.record__title")) {	
-				
-			System.out.println(peopleResult.child(0).text());
-			/*
-			 * final String name=peopleResult.child(0).text(); final String
-			 * age=peopleResult.child(1).text();
-			 */
-			
-			}
-	}
+	public static void main(String[] args) throws Exception {
 
+		final String lastName = "smith";
+		final String firstName = "same";
+		final String city = "New York";
+		final String state = "ny";
+
+		final HttpResponse<String> response = Unirest
+				.get("https://www.peoplefinders.com/api/widget/widgets?totalRecords=10")
+				.queryString("firstName", firstName).queryString("lastName", lastName).queryString("city", city)
+				.queryString("start", state).asString();
+		// System.out.println(response.getBody());
+
+		final Document htmlSnippet = Jsoup.parseBodyFragment(response.getBody());
+		System.out.println("Got Snippet");
+		System.out.println(htmlSnippet.outerHtml());
+		// for (Element peopleResult : htmlSnippet.select("div.row > div.col-md-12 >
+		// div.row > div.col-md-11")) {
+		/*
+		 * for (Element peopleResult : htmlSnippet.select("div.wrapper")) {
+		 * System.out.println("results:"); System.out.println(peopleResult.outerHtml());
+		 * //System.out.println(peopleResult.child(0).text());
+		 * 
+		 * final String name=peopleResult.child(0).text(); final String
+		 * age=peopleResult.child(1).text();
+		 * 
+		 * 
+		 * }
+		 */
+		System.out.println("end of line");
+	}
 }
